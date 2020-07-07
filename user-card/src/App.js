@@ -14,8 +14,10 @@ class App extends React.Component {
       userText: '' ,
       user: [] ,
     }
-    
   }
+
+ 
+
 
   componentDidMount(){
     axios.get(`https://api.github.com/users/jazmineMT`)
@@ -48,21 +50,29 @@ class App extends React.Component {
     {
     if (this.state.user.length === 0 ){
       return <p>Fetching Data</p>
-    } else{
+    } 
 
     return (
         <div>
-          <h1>Github User Info</h1>
-          <input
-          type="text"
-          value={this.state.userText}
-          onChange={this.handleChanges}
-          />
-          <button onClick={this.fetchUsers}>Search by Username</button>
+          <div className='header'>
+            <h1>Search GitHub Accounts</h1>
+          </div> 
+            <div className='search'>
+                <input
+                className= 'input'
+                label="Type in Username"
+                type="text"
+                value={this.state.userText}
+                onChange={this.handleChanges}
+                variant='filled'
+                />
+                <button onClick={this.fetchUsers}>Search</button>
+            </div>
+         
           <Card info={this.state.user} />
         </div>
     )
-  }
+  
 }
  
 }

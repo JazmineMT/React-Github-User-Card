@@ -1,6 +1,7 @@
 import React from 'react'
 import CardInfo from './CardInfo'
 
+
 class Card extends React.Component{
     constructor(props){
         super(props);
