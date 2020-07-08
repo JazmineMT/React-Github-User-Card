@@ -3,6 +3,7 @@ import ReactDom from 'react-dom'
 import './App.css';
 import Card from "./components/Card"
 import axios from 'axios'
+import Followers from './components/Followers'
 
 
 
@@ -13,6 +14,7 @@ class App extends React.Component {
     this.state = {
       userText: '' ,
       user: [] ,
+      followers : [] ,
     }
   }
 
@@ -25,6 +27,12 @@ class App extends React.Component {
       this.setState({
         user: res.data
       })
+    axios.get('https://api.github.com/users/jazmineMT/followers')
+    .then(res=>{
+      this.setState({
+        followers: res.data
+      })
+    })
     })
   }
 
@@ -40,6 +48,12 @@ class App extends React.Component {
     .then( res => {
       this.setState({
           user: res.data
+      });
+    })
+    axios.get(`https://api.github.com/users/${this.state.userText}/followers`)
+    .then( res => {
+      this.setState({
+          followers: res.data
       });
     })
   }
@@ -70,6 +84,7 @@ class App extends React.Component {
             </div>
          
           <Card info={this.state.user} />
+          <Followers followers={this.state.followers}/>
         </div>
     )
   

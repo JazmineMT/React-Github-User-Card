@@ -3,6 +3,7 @@ import gitHub from './github.png'
 import email from './email.png'
 import {Card, CardMedia , CardActionArea, FormHelperText}from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Followers from './Followers'
 
 const useStyles = makeStyles({
     div:{
@@ -26,10 +27,17 @@ const useStyles = makeStyles({
 
 const CardInfo = props =>{
     const classes = useStyles();
+
+    // let followers = props.follower.map( e =>{
+    //     console.log('working')
+    // })
     
+    console.log(props.info.location)
 
     return (
         <div className={classes.div}>
+
+        
           <Card className={classes.root}>
             <CardActionArea>
                 <CardMedia
@@ -46,6 +54,8 @@ const CardInfo = props =>{
                 < a href={props.info.email}> <img src={email}/></a>
              </CardActionArea>
          </Card>
+            
+        
         </div>
     )
 }
